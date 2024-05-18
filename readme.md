@@ -44,16 +44,16 @@ To set up Prompt Sanctuary on your local machine, follow these steps:
    source myenv/bin/activate
     ```
 
-5. Install the required dependencies from the `requirements.txt` file:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-6. Navigate to the actual code directory:
+5. Navigate to the actual code directory:
 
    ```bash
    cd code
+   ```
+
+6. Install the required dependencies from the `requirements.txt` file:
+
+   ```bash
+   pip install -r requirements.txt
    ```
 
 ## Running the Application
