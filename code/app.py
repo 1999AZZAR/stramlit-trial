@@ -3,10 +3,10 @@ from generator import GenerativeModel  # Import the GenerativeModel class
 from st_copy_to_clipboard import st_copy_to_clipboard
 
 # Set the page configuration
-st.set_page_config(page_title="Prompt Sanctuary", page_icon="img/favicon.ico")
+st.set_page_config(page_title="Prompt Sanctuary", page_icon="https://raw.githubusercontent.com/1999AZZAR/streamlit_promptgen/master/code/img/favicon.ico")
 
 def main():
-    st.sidebar.image("img/logo.png", use_column_width=False, width=200)
+    st.sidebar.image("https://raw.githubusercontent.com/1999AZZAR/streamlit_promptgen/master/code/img/logo.png", use_column_width=False, width=200)
     st.sidebar.title("Prompt Sanctuary")
     page = st.sidebar.radio("Go to", ("Text Prompt", "Image Prompt"))
 
