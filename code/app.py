@@ -13,6 +13,10 @@ def main():
     with st.sidebar:
         gemini_api_key = st.sidebar.text_input("Gemini API Key", key="chatbot_api_key", type="password")
         if gemini_api_key:
+            api_key = st.session_state.get("chatbot_api_key")
+            # Save the API key to a text file
+            with open('api_key.txt', 'w') as file:
+                file.write(api_key)
             gen_model = GenerativeModel()  # Instantiate GenerativeModel if API key is provided
         else:
             st.sidebar.info("Please enter your Gemini API key to use the service.")

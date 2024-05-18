@@ -5,12 +5,6 @@ import streamlit as st
 
 class GenerativeModel:
     def __init__(self):
-        # Retrieve the API key from session state
-        api_key = st.session_state.get("chatbot_api_key")
-
-        # Save the API key to a text file
-        with open('api_key.txt', 'w') as file:
-            file.write(api_key)
 
         # Read the API key from the text file
         with open('api_key.txt', 'r') as file:
@@ -50,19 +44,19 @@ class GenerativeModel:
 
     def generate_response(self, user_input_text):
         # self.configure_api_key()
-        prompt_parts = self.read_prompt_parts_from_file('examples1.txt', user_input_text)
+        prompt_parts = self.read_prompt_parts_from_file('instruction/examples1.txt', user_input_text)
         response = self.model.generate_content(prompt_parts)
         return response.text
 
     def generate_random(self):
         # self.configure_api_key()
-        prompt_parts = self.read_prompt_parts_from_file('examples2.txt')
+        prompt_parts = self.read_prompt_parts_from_file('instruction/examples2.txt')
         response = self.model.generate_content(prompt_parts)
         return response.text
 
     def generate_imgdescription(self, user_input_image):
         # self.configure_api_key()
-        with open('image_styles.txt', 'r') as file:
+        with open('instruction/image_styles.txt', 'r') as file:
             image_styles = [line.strip() for line in file.readlines()]
 
         chosen_styles = random.sample(image_styles, k=3)
@@ -76,7 +70,7 @@ class GenerativeModel:
 
     def generate_vrandom(self):
         # self.configure_api_key()
-        with open('image_styles.txt', 'r') as file:
+        with open('instruction/image_styles.txt', 'r') as file:
             image_styles = [line.strip() for line in file.readlines()]
 
         chosen_styles = random.sample(image_styles, k=3)
@@ -94,7 +88,7 @@ class GenerativeModel:
 
     def reverse_image(self, image_data):
         try:
-            with open('image_styles.txt', 'r') as file:
+            with open('instruction/image_styles.txt', 'r') as file:
                 image_styles = [line.strip() for line in file.readlines()]
 
             prompt_parts = [
