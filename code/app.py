@@ -20,7 +20,7 @@ def main():
         else:
             st.sidebar.info("Please enter your Gemini API key to continue.")
         st.markdown("[Get a gemini API key](https://aistudio.google.com/app/apikey)")
-        st.markdown("[View the source code](https://github.com/streamlit/llm-examples/blob/main/Chatbot.py)")
+        st.markdown("[View the source code](https://github.com/1999AZZAR/streamlit_promptgen)")
         st.markdown("powered by :")
         st.markdown("[![gemini](https://www.gstatic.com/aistudio/ai_studio_favicon_32x32.svg)](https://aistudio.google.com)")
 
