@@ -1,6 +1,6 @@
 import streamlit as st
-import pyperclip
 from generator import GenerativeModel  # Import the GenerativeModel class
+from st_copy_to_clipboard import st_copy_to_clipboard
 
 # Set the page configuration
 st.set_page_config(page_title="Prompt Sanctuary", page_icon="./img/favicon.ico")
@@ -64,10 +64,10 @@ def display_txt(gen_model):
             prompt_generated = True
         
     if generated_prompt is not None:
+        st.success("Prompt have been generated!")
         st.write(f"{generated_prompt}")
-        if prompt_generated and st.button("Copy Prompt"):
-            pyperclip.copy(generated_prompt)
-            st.success("Prompt copied to clipboard!")
+        if prompt_generated:
+            st_copy_to_clipboard(generated_prompt)
 
 def display_img(gen_model):
     st.title("Prompt generator (img)")
@@ -120,11 +120,10 @@ def display_img(gen_model):
             prompt_generated = True
 
     if generated_prompt is not None:
+        st.success("Prompt have been generated!")
         st.write(f"{generated_prompt}")
-        if prompt_generated and st.button("Copy Prompt"):
-            pyperclip.copy(generated_prompt)
-            st.success("Prompt copied to clipboard!")
-
+        if prompt_generated:
+            st_copy_to_clipboard(generated_prompt)
 
 def display_welcome():
     st.title("welcome to prompt sanctuary")

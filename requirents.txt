@@ -1,8 +1,6 @@
 streamlit
-werkzeug
 google-generativeai
-python-dotenv
 google-api-python-client
 google-auth
 google-auth-oauthlib
-pyperclip
+st-copy-to-clipboard
