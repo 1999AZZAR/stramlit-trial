@@ -1,11 +1,20 @@
 # generative_model.py
 import google.generativeai as genai
 import random
+import streamlit as st
 
 class GenerativeModel:
     def __init__(self):
-        self.api_keys = []
-        self.current_key_index = 0
+        # Retrieve the API key from session state
+        api_key = st.session_state.get("chatbot_api_key")
+
+        # Save the API key to a text file
+        with open('api_key.txt', 'w') as file:
+            file.write(api_key)
+
+        # Read the API key from the text file
+        with open('api_key.txt', 'r') as file:
+            text_key = file.read()
 
         # Configure the model
         self.generation_config = {
@@ -24,24 +33,13 @@ class GenerativeModel:
             {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"}
         ]
 
-        # Initialize the model
+        # Initialize the model with the retrieved API key
+        genai.configure(api_key=text_key)
         self.model = genai.GenerativeModel(
             model_name="gemini-1.5-pro-latest",
             generation_config=self.generation_config,
             safety_settings=self.safety_settings,
         )
-
-    def set_api_key(self, api_key):
-        self.api_keys = api_key.split(',')
-        self.current_key_index = 0
-
-    def get_current_api_key(self):
-        key = self.api_keys[self.current_key_index]
-        self.current_key_index = (self.current_key_index + 1) % len(self.api_keys)
-        return key
-
-    def configure_api_key(self):
-        genai.api_key = self.get_current_api_key()
 
     def read_prompt_parts_from_file(self, file_path, user_input_text=''):
         with open(file_path, 'r') as file:
@@ -51,19 +49,19 @@ class GenerativeModel:
         return prompt_parts
 
     def generate_response(self, user_input_text):
-        self.configure_api_key()
+        # self.configure_api_key()
         prompt_parts = self.read_prompt_parts_from_file('./instruction/examples1.txt', user_input_text)
         response = self.model.generate_content(prompt_parts)
         return response.text
 
     def generate_random(self):
-        self.configure_api_key()
+        # self.configure_api_key()
         prompt_parts = self.read_prompt_parts_from_file('./instruction/examples2.txt')
         response = self.model.generate_content(prompt_parts)
         return response.text
 
     def generate_imgdescription(self, user_input_image):
-        self.configure_api_key()
+        # self.configure_api_key()
         with open('./instruction/image_styles.txt', 'r') as file:
             image_styles = [line.strip() for line in file.readlines()]
 
@@ -77,7 +75,7 @@ class GenerativeModel:
         return response.text
 
     def generate_vrandom(self):
-        self.configure_api_key()
+        # self.configure_api_key()
         with open('./instruction/image_styles.txt', 'r') as file:
             image_styles = [line.strip() for line in file.readlines()]
 
