@@ -11,6 +11,7 @@ Welcome to Prompt Sanctuary, a versatile tool for generating prompts for both te
   - [Running the Application](#running-the-application)
   - [Structure of the Code](#structure-of-the-code)
   - [Credits](#credits)
+  - [See on streamlit](#see-on-streamlit)
 
 ## Introduction
 
@@ -92,3 +93,7 @@ streamlit/
 ## Credits
 
 Prompt Sanctuary is powered by Streamlit and leverages AI models for prompt generation. Special thanks to the developers of Streamlit and the underlying generative models for enabling this project.
+
+## See on streamlit
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://prompt-sanctuary.streamlit.app/)
