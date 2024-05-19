@@ -86,11 +86,12 @@ class GenerativeModel:
         response = self.model.generate_content(prompt_parts)
         return response.text
 
-    def reverse_image(self, image_data):
+    def reverse_image(self, image_file):
         try:
             with open('/mount/src/streamlit_promptgen/code/instruction/image_styles.txt', 'r') as file:
                 image_styles = [line.strip() for line in file.readlines()]
 
+            image_data = image_file.read()
             prompt_parts = [
                 "\nPlease provide a detailed description, written in proper English, to recreate this image in 250 to 500 words. Include information about the style, mood, lighting, and other important details. Ensure your sentences are complete and free from spelling and grammar errors:",
                 {"mime_type": "image/jpeg", "data": image_data},
