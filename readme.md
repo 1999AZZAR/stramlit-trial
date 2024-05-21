@@ -90,6 +90,24 @@ streamlit/
 - `app.py`: The main Python script containing the Streamlit application code.
 - `generator.py`: Python module implementing the GenerativeModel class for generating prompts.
 
+## Callback Sequence Diagram
+
+```text
+User            ->   Web Browser           ->   Streamlit Server (app.py)   ->   Generative Model (generator.py)
+|                   |                         |                                |                                 |
+| Input text/image  |                         |                                |                                 |
+|------------------> Request to Server        |                                |                                 |
+|                   |------------------------>|                                |                                 |
+|                   |                         | Process input                  |                                 |
+|                   |                         |------------------------------->|                                 |
+|                   |                         |                                | Generate prompt                 |
+|                   |                         |                                |<--------------------------------|
+|                   |                         | Return generated prompt        |                                 |
+|                   |<------------------------|                                |                                 |
+|                   | Display prompt          |                                |                                 |
+|<------------------|                         |                                |                                 |
+```
+
 ## Credits
 
 Prompt Sanctuary is powered by Streamlit and leverages AI models for prompt generation. Special thanks to the developers of Streamlit and the underlying generative models for enabling this project.
